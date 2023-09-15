@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Client::factory(20)->create();
-        Administrateur::factory(20)->create();
+        Administrateur::factory(1)->create([
+            'email'=>"admin@gmail.com"
+        ]);
     }
 }
