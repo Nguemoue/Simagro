@@ -11,13 +11,17 @@ class AdministrateurFactory extends Factory
     public function definition(): array
     {
         return [
-            'type' => $this->faker->randomDigit(),
+            'type' => $this->faker->randomElement(
+                [config('misc.type_admin.simple'),config('misc.type_admin.super')]
+            ),
             'nom' => $this->faker->firstName(),
             'prenom' => $this->faker->lastName(),
             'bp' => $this->faker->postcode(),
             'ville' => $this->faker->city(),
             'pays' => $this->faker->country(),
-            'type_compte' => $this->faker->randomDigit(),
+            'type_compte' => $this->faker->randomElement(
+                [config('misc.type_account.entreprise'),config('misc.type_account.particulier')]
+            ),
             'telephone' => $this->faker->phoneNumber(),
             'password' => bcrypt("password"),
             'photo' => $this->faker->imageUrl(1024,800),
