@@ -1,6 +1,6 @@
-@extends("layouts.stisla.stisla_top_navigation")
+@extends("templates.client_dashboard.client_dashboard")
 
-@section("main-content")
+@section("content")
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}

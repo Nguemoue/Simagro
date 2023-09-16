@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\ClientTestimonyController;
+use App\Http\Controllers\Client\ServiceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +29,11 @@ Route::group([
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+    //services
+    Route::as("client.")->group(callback: function(){
+        Route::get("services", [ServiceController::class,"index"])->name("services.index");
+        Route::resource("testimonies", ClientTestimonyController::class);
     });
     Route::get("/facebook/login", [FacebookController::class, "index"])->name("facebook.login");
 });

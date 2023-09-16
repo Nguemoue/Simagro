@@ -1,11 +1,11 @@
-@extends("layouts.dashboard.dashboard_admin_template")
+@extends("templates.admin_dashboard.admin_dashboard_template")
 
-@section("main-content")
+@section("content")
     <h1>Gestion des Services</h1>
     <hr>
     <div class="row">
         @foreach($services as $service)
-            <div class="col col-4">
+            <div class="col-12 col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-header"> {{$service->libelle}}</div>
                     <div class="card-body" style="background-image: url('{{asset('storage/'.$service->image)}}')">
@@ -23,13 +23,13 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="btn-group">
-                            <a href="{{route('admin.services.edit',['service'=>$service->id])}}" class="btn btn-primary">Editer</a>
-                            <a href="{{route('admin.services.show',["service"=>$service->id])}}" class="btn btn-info">Voir</a>
+                        <div class="btn-group btn-group-sm justify-content-between btn-group-toggle">
+                            <a href="{{route('admin.services.edit',['service'=>$service->id])}}" class="btn btn-sm btn-primary">Editer</a>
+                            <a href="{{route('admin.services.show',["service"=>$service->id])}}" class="btn btn-sm btn-info">Voir</a>
                             <form action="{{route('admin.services.destroy',[$service->id])}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Supprimer</button>
+                                <button class="btn btn-sm btn-danger">Supprimer</button>
                             </form>
                         </div>
                     </div>
@@ -40,20 +40,8 @@
 
 @endsection
 
-@section("top_navigation")
-    <nav class="navbar navbar-secondary navbar-expand-lg">
-        <div class="container">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{route('admin.services.create')}}"  class="nav-link"><i class="fas fa-plus"></i><span>creer</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Lister</span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-@endsection
-@section("topnavigation.menuhamburger")
-    @include("layouts._partials.menuhamburger")
-@endsection
+@push("top_navigation")
+    <li class="nav-item mx-4">
+        <a href="{{route('admin.services.create')}}" class="btn rounded-lg btn-success">Créer un nouveau services</a>
+    </li>
+@endpush

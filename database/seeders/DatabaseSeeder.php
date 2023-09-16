@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Administrateur;
-use App\Models\Client;
-use App\Models\Profile;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\DomainePublication;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,9 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Client::factory(20)->create();
+        //Client::factory(20)->create();
+        //configuration de l'administrateur par defaut
         Administrateur::factory(1)->create([
-            'email'=>"admin@gmail.com"
+            'email'=>"admin@gmail.com",
+            'password' => bcrypt("password")
         ]);
+        $this->call(ParametreSeeder::class);
+        $this->call(DomainePublication::class);
     }
 }

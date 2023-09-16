@@ -182,7 +182,7 @@ h6,
         border-bottom: 1px solid rgba(256, 256, 256, .1);
         z-index: 999;
     }
-    
+
     .sticky-top.navbar-dark {
         position: fixed;
         background: #FFFFFF;
@@ -328,6 +328,16 @@ h6,
     background: var(--primary);
     border-radius: 2px;
     transform: rotate(-45deg);
+}
+.service-item .service-icon2{
+    margin-bottom: 30px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    border-radius: 2px;
 }
 
 .service-item .service-icon i {

@@ -83,7 +83,6 @@ return [
     */
 
     'locale' => 'en',
-    "izitoast_delay"=>4000,
     "type_client"=>"client",
     "type_admin"=>"admin",
     "guard_admin"=>"admin",

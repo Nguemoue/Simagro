@@ -1,61 +1,46 @@
-@extends("layouts.dashboard.dashboard_admin_template")
+@extends("templates.admin_dashboard.admin_dashboard_template")
 
-@section("main-content")
-    <h1>Gestion des Realisations</h1>
-    <hr>
+@section("content")
+    <h4 class="text-center">Listes des réaliisations.</h4>
+    <div class="text-divider"></div>
     <div class="row">
-        @foreach($realisations as $realisation)
-            <div class="col col-md-6 col-xs-12 col-sm-12 col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4> {{$realisation->titre}}</h4>
-                    </div>
-                    <div class="card-body" style="background-image: url('{{asset('storage/'.$realisation->image)}}')">
-                        <div>
-                            <b>Lieu:</b>
-                            <span>
-                                {{$realisation->lieu}}
-                            </span>
-                        </div>
-                        <hr>
-                        <div>
-                            <div >
-                                <b>Date:</b>
-                                <span>{{$realisation->date_realisation->isoFormat('lll')}}</span>
-                            </div>
-                            <hr>
-                            <div >
-                                <b class="display-6">Realisateur:</b>
-                                {{$realisation->realisateur}}
-                            </div>
-                            <hr>
-                            <div >
-                                <b>Nombre de jour</b>
-                                {{$realisation->nombre_jour}}
-                            </div>
-                            <hr>
-                            <div>
-                                <b>Contenu</b>
-                                <blockquote>
-                                    {{$realisation->contenu}}
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="btn-group d-flex justify-content-between">
-                            <a href="{{route('admin.realisations.edit',['realisation'=>$realisation->id])}}" class="btn btn-primary">Editer</a>
-                            <a href="{{route('admin.realisations.show',["realisation"=>$realisation->id])}}" class="btn btn-info">Voir</a>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Titre</th>
+                <th>Lieu</th>
+                <th>Date de realisation</th>
+                <th>Realisateur</th>
+                <th>Nombre de jour</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($realisations as $realisation)
+                <tr>
+                    <td>{{$loop->index+1}}</td>
+                    <td>{{$realisation->titre}}</td>
+                    <td>{{$realisation->lieu}}</td>
+                    <td>{{$realisation->date_realisation}}</td>
+                    <td>{{$realisation->realisateur}}</td>
+                    <td>{{$realisation->nombre_jour}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm d-flex justify-content-between">
+                            <a href="{{route('admin.realisations.edit',['realisation'=>$realisation->id])}}" class="btn btn-sm btn-primary">Editer</a>
+                            <a href="{{route('admin.realisations.show',["realisation"=>$realisation->id])}}" class="btn btn-sm btn-info">Voir</a>
                             <form action="{{route('admin.realisations.destroy',[$realisation->id])}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Supprimer</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
     </div>
 
 @endsection

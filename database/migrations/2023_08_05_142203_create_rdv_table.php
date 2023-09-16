@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('rdv', function (Blueprint $table) {
+        Schema::create('rdvs', function (Blueprint $table) {
             $table->id();
             $table->foreignId("client_id")->constrained()->cascadeOnDelete();
             $table->foreignId("administrateur_id")->constrained()->cascadeOnDelete();
@@ -22,6 +22,6 @@ return new class extends Migration {
 
     public function down()
     {
-        Schema::dropIfExists('rdv');
+        Schema::dropIfExists('rdvs');
     }
 };

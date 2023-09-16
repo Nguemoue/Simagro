@@ -71,3 +71,10 @@ if(!function_exists("getTypeForMime")){
         return  "image";
     }
 }
+
+if(!function_exists("adminAuth")){
+    function adminAuth(): \App\Models\Administrateur|\Illuminate\Contracts\Auth\Authenticatable|null
+    {
+        return auth('admin')->user();
+    }
+}

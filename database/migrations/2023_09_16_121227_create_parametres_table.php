@@ -7,17 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('ressource_realisations', function (Blueprint $table) {
+        Schema::create('parametres', function (Blueprint $table) {
             $table->id();
-            $table->string("url");
-            $table->tinyInteger("type_resource")->default(0);
-            $table->foreignId("realisation_id")->constrained()->cascadeOnDelete();
+            $table->string("nom")->unique();
+            $table->string("value")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('ressource_realisations');
+        Schema::dropIfExists('parametres');
     }
 };

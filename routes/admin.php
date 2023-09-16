@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\ParametreController;
+use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\RealisationController;
+use App\Http\Controllers\Admin\ResourcePublicationController;
 use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +29,12 @@ Route::group([
         });
         Route::resource("services", ServiceController::class);
         Route::resource("realisations", RealisationController::class);
+        //parametre
+        Route::get("parametres",[ParametreController::class,"index"])->name("parametres.index");
+        //publications
+        Route::resource("publications",PublicationController::class);
+        //resource des publication
+        Route::resource("publications.resources", ResourcePublicationController::class);
     });
 });
 

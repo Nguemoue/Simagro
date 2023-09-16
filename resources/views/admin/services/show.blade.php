@@ -1,6 +1,6 @@
-@extends("layouts.dashboard.dashboard_admin_template")
+@extends("templates.admin_dashboard.admin_dashboard_template")
 
-@section("main-content")
+@section("content")
 
     <div class="container">
         <div class="card card-primary">
@@ -10,11 +10,11 @@
 
             <div class="card-body">
                 <h3>Titre du service</h3>
-                <div class="card">
-                    <div class="card-header">
+                <div class="article">
+                    <div class="article-header-header">
                         {{$service->libelle}}
                     </div>
-                    <div class="card-body">
+                    <div class="article-details">
                         <h4>But</h4>
                         <div class="card-text">{{$service->but}}</div>
                         <h4>description</h4>
@@ -40,6 +40,9 @@
         </div>
     </div>
 @endsection
-@section("top_navigation")
+@push("top_navigation")
+    <li class="nav-item">
 
-@endsection
+        <a class="nav-link mx-4 btn-outline-secondary btn" href="{{route('admin.services.index')}}">Listes des services</a>
+    </li>
+@endpush

@@ -8,5 +8,7 @@ return [
     'type_admin'=>[
         "simple"=>0,
         'super'=>1
-    ]
+    ],
+    "izitoast_delay"=>10000,
+    "izitoast_position"=>"topLeft"
 ];
