@@ -12,7 +12,4 @@ class Client extends Authenticate implements MustVerifyEmail
     use HasFactory,Notifiable;
     protected $guarded = [];
 
-    public function sendEmailVerificationNotification(){
-
-    }
 }
