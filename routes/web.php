@@ -23,6 +23,10 @@ Route::group([
     "prefix" => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect']
 ], function () {
+    Route::get("/test",function (){
+       $mail = Mail::to("lucchuala@gmail.com")->send(new \App\Mail\testMail());
+       dd($mail);
+    });
     Route::get('/', [HomeController::class, "index"])->name("home");
     Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
     Route::middleware('auth:web')->group(function () {
