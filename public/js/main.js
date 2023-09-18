@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,13 +24,13 @@
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
     });
-    
+
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
     const showClass = "show";
-    
+
     $(window).on("load resize", function() {
         if (this.matchMedia("(min-width: 992px)").matches) {
             $dropdown.hover(
@@ -58,8 +58,8 @@
         delay: 10,
         time: 2000
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
@@ -121,6 +121,8 @@
             }
         }
     });
-    
+
+    //select 2
+    $(".select2").select2()
 })(jQuery);
 
