@@ -7,33 +7,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="{{route('home')}}" @class(["nav-item nav-link","active"=>Route::is("home")])>Home</a>
-            <a href="{{route('client.services.index')}}" @class(["nav-item nav-link","active"=>Route::is("client.services.*")])>Services</a>
-            <a href="https://wa.me/message/NQ2L6NZR6EYLP1" class="nav-item nav-link">Contact</a>
-            <a href="#" class="nav-item nav-link">About</a>
+            <a href="{{route('home')}}" @class(["nav-item nav-link","active"=>Route::is("home")])>{{__('navigation.home')}}</a>
+            <a href="{{route('client.services.index')}}" @class(["nav-item nav-link","active"=>Route::is("client.services.*")])>{{__('navigation.services')}}</a>
+            <a href="https://wa.me/message/NQ2L6NZR6EYLP1" class="nav-item nav-link">{{__('navigation.contact')}}</a>
+            <a href="#" class="nav-item nav-link">{{__('navigation.about')}}</a>
 
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Espaces</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('navigation.spaces')}}</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{route('dashboard')}}" class="dropdown-item">Espace Client</a>
-                    <a href="{{route('admin.home')}}" class="dropdown-item">Espace Administrateur</a>
+                    <a href="{{route('dashboard')}}" class="dropdown-item">{{__('navigation.client_space')}}</a>
+                    <a href="{{route('admin.home')}}" class="dropdown-item">{{__('navigation.admin_space')}}</a>
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('navigation.pages')}}</a>
                 <div class="dropdown-menu m-0">
-                    <a href="#" class="dropdown-item">Pricing Plan</a>
-                    <a href="#" class="dropdown-item">Our features</a>
-                    <a href="#" class="dropdown-item">Team Members</a>
-                    <a href="{{route('client.testimonies.index')}}" class="dropdown-item">Testimonial</a>
-                    <a href="#" class="dropdown-item">Free Quote</a>
+                    <a href="#" class="dropdown-item">{{__('navigation.pricing_plan')}}</a>
+                    <a href="#" class="dropdown-item">{{__('navigation.our_feature')}}</a>
+                    <a href="#" class="dropdown-item">{{__('navigation.team_members')}}</a>
+                    <a href="{{route('client.testimonies.index')}}" class="dropdown-item">{{__('navigation.testimonial')}}</a>
+                    <a href="#" class="dropdown-item">{{__('navigation.free_quote')}}</a>
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Langue ({{currentLocale()}})</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('navigation.language')}} ({{currentLocale()}})</a>
                 <div class="dropdown-menu m-0">
                     @foreach($supportedLocales as $key =>$locale)
-                        <a href="#" @class(["active"=>$key==currentLocale(),"dropdown-item"]) >{{$locale['name']}}</a>
+                        <a href="{{LaravelLocalization::getLocalizedURL($key)}}" @class(["active"=>$key==currentLocale(),"dropdown-item"]) >{{$locale['name']}}</a>
                     @endforeach
                 </div>
             </div>

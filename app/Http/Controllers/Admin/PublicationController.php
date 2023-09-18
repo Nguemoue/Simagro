@@ -44,6 +44,6 @@ class PublicationController extends Controller
     public function destroy(Publication $publication)
     {
         $publication->delete();
-        return back()->with(ReturnStatus::SUCCESS,deleteResponse('publication'));
+        return back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete('publication'));
     }
 }

@@ -36,7 +36,7 @@ class ResourcePublicationController extends Controller
             throw  ValidationException::withMessages([__("Le fichier de resource ne doit pas dépasse ".config('media-library.max_file_size'))]);
         }
 
-        return back()->with(ReturnStatus::SUCCESS,updateResponse('resource'));
+        return back()->with(ReturnStatus::SUCCESS,responseTextAfterUpdate('resource'));
 
     }
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class NewPasswordController extends Controller
 {

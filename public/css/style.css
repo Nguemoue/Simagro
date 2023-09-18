@@ -500,3 +500,17 @@ h6,
         margin-bottom: -75px;
     }
 }
+
+/** for components */
+input{
+    outline: none;
+}
+.outline-none{
+    outline: none;
+}
+.outline-none:focus{
+    outline: none;
+}
+.w-80{
+    width: 80%;
+}

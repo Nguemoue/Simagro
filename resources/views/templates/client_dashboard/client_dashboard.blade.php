@@ -12,7 +12,7 @@
                 </li>
 
                 <li @class(["sidebar-item","active"=>Route::is("dashboard")])>
-                    <a class="sidebar-link" href="{{route('admin.home')}}">
+                    <a class="sidebar-link" href="{{route('dashboard')}}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Acceuil</span>
                     </a>
                 </li>
@@ -76,7 +76,7 @@
                         <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>
                             Help Center</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/logout">Log out</a>
+                        <a class="dropdown-item" href="{{route('logout')}}"> <i class="align-middle me-1 fa fa-power-off"></i> Log out</a>
                     </div>
                 </li>
             </ul>
@@ -109,7 +109,7 @@
 @push("stylesheets")
     <link rel="stylesheet" href="{{asset('lib/izitoast/css/iziToast.min.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/font-awesome/css/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{asset('stisla/assets/modules/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/customstyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/components.css')}}">
 @endpush

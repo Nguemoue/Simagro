@@ -37,7 +37,7 @@ class ServiceController extends Controller
                 "description"=>$data->description,
                 "but"=>$data->but,
                 "administrateur_id"=>auth('admin')->id(),
-                "image"=>$request->file("image")->store(storePath('services'))
+                "image"=>$request->file("image")->store(getStoragePathFor('services'))
             ]);
             foreach ($data->otherImages as $image){
                 $service->addMedia($image)->toMediaCollection("images");
@@ -82,7 +82,7 @@ class ServiceController extends Controller
         }
         if($request->hasFile("image")){
             \Storage::delete($service->image);
-            $service->image = $request->file("image")->store(storePath("services"));
+            $service->image = $request->file("image")->store(getStoragePathFor("services"));
         }
         $service->libelle = $request->input("titre");
         $service->but = $request->input("but");
@@ -95,7 +95,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect()->back()->with(ReturnStatus::SUCCESS,deleteResponse("services"));
+        return redirect()->back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("services"));
 
     }
 }

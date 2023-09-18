@@ -41,7 +41,7 @@ class RealisationController extends Controller
                 "realisateur"=>$data->realisateur,
                 "date_realisation"=>$data->date_realisation,
                 "nombre_jour"=>$data->nombre_jour,
-                "photo"=>$request->file("photo")->store(storePath('realisations')),
+                "photo"=>$request->file("photo")->store(getStoragePathFor('realisations')),
             ]);
             foreach ($data->ressources as $ressource){
                 $realisation->addMedia($ressource)->toMediaCollection("ressources");
@@ -85,7 +85,7 @@ class RealisationController extends Controller
         }
         if($request->hasFile("photo")){
             \Storage::delete($realisation->photo);
-            $realisation->photo = $request->file("photo")->store(storePath("realisations"));
+            $realisation->photo = $request->file("photo")->store(getStoragePathFor("realisations"));
         }
         $realisation->contenu = $request->input("contenu");
         $realisation->lieu = $request->input("lieu");
@@ -100,6 +100,6 @@ class RealisationController extends Controller
     public function destroy(Realisation $realisation)
     {
         $realisation->delete();
-        return redirect()->back()->with(ReturnStatus::SUCCESS,deleteResponse("realisations"));
+        return redirect()->back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("realisations"));
     }
 }

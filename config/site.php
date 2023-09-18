@@ -51,6 +51,12 @@ return [
         'Elevage',
         'Pisciculture',
         'Electronique'
-    ]
+    ],
+    /**
+     * Balise Meta
+    **/
+    'og_title'=>"",
+    'og_image'=>config('app.url').'/favicon.jpg',
+    'og_site_name'=>"Simagro"
 
 ];

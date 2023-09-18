@@ -44,5 +44,3 @@
 
 @endsection
 
-@section("ui-topbar")
-@endsection

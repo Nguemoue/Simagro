@@ -14,7 +14,7 @@ class PublicationService
         return Publication::create([
             "titre"=>$data->titre,
             "contenu"=>$data->contenu,
-            "administrateur_id"=>adminAuth()->id,
+            "administrateur_id"=>adminUser()->id,
             "date_publication"=>now(),
             "domaine_publication_id"=>$data->domaine_publication_id,
             "statut"=>1

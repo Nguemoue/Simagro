@@ -1,4 +1,4 @@
-@props(['size','modalId',"size"])
+@props(['size','modalId',"title"])
 @php
     $footer = $footer??null;
     $title = $title??'Modal title';

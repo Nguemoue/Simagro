@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{currentLocale()}}">
 
 <head>
     <meta charset="utf-8">
     <title>{{config('app.name')}}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Simagro , Agriculture , Projet agricole" name="keywords">
-    <meta content="Simagro est une entreprise qui fait dans les projets agricoles" name="description">
-    <meta property="og:title" content="Simagro Sarl" />
-    <meta property="og:site_name" content="Simagro Sarl" />
-    <meta property="og:url" content="https://simagro.cm" />
+    <meta content="{{config('site.keys')}}" name="keywords">
+    <meta content="{{config('site.description')}}" name="description">
+    <meta property="og:title" content="{{config('site.title')}}" />
+    <meta property="og:site_name" content="{{config('site.og_site_name')}}" />
+    <meta property="og:url" content="{{config('app.url')}}" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Confie vos projets aux expert" />
-    <meta property="og:image" content="https://simagro.onrender.com/favicon.jpg" />
+    <meta property="og:description" content="{{config('site.description')}}" />
+    <meta property="og:image" content="{{config('site.og_image')}}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <!-- Favicon -->
-    <link href="{{asset('favicon.ico')}}" rel="icon">
+    <link href="{{asset('favicon.jpg')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
