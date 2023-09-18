@@ -7,6 +7,7 @@
     <hr>
     <form action="{{route('client.testimonies.update',['testimony'=>$temoignage->id])}}" method="post" class="needs-validation" novalidate>
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="contenu" class="form-label">Contenu</label>
             <textarea name="contenu" id="contenu" class="form-control summernote" cols="30" rows="10" minlength="10" required>{{$temoignage->contenu}}</textarea>

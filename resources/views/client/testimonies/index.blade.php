@@ -23,7 +23,11 @@
                 <td>{{$temoignage->created_at->isoformat('lll')}}</td>
                 <td>
                     <a href="{{route('client.testimonies.edit',['testimony'=>$temoignage->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    <form action="{{route('client.testimonies.destroy',['testimony'=>$temoignage->id])}}" method="post">
+                        @method("DELETE")
+                        @csrf
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </form>
                 </td>
             </tr>
         @empty

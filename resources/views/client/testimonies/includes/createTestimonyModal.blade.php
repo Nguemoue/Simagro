@@ -3,7 +3,7 @@
         @csrf
         <div class="form-group">
             <label for="contenu">Contenu</label>
-            <textarea class="form-control summernote" id="contenu" name="contenu"></textarea>
+            <textarea class="form-control summernote" id="contenu" name="contenu" required></textarea>
         </div>
         <div class="d-flex justify-content-between">
             <button class="btn btn-primary"><i class="fa fa-share-square"></i> Publier</button>

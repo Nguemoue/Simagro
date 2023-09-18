@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Client;
 use App\Constant\ReturnStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\TestimonyStoreRequest;
+use App\Http\Requests\Client\UpdateTestimonyRequest;
 use App\Models\Temoignage;
 use App\Services\Testimony\TestimonyService;
-use Illuminate\Http\Request;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class ClientTestimonyController extends Controller
 {
@@ -44,13 +44,15 @@ class ClientTestimonyController extends Controller
         ]);
     }
 
-    public function update(Request $request, Temoignage $testimony)
+    public function update(UpdateTestimonyRequest $request, Temoignage $testimony)
     {
-
-
+        $testimony->contenu = $request->input("contenu");
+        return back()->with(ReturnStatus::SUCCESS,responseTextAfterUpdate("temoignage"));
     }
 
     public function destroy(Temoignage $testimony)
     {
+        $testimony->delete();
+        return back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("temoignage"));
     }
 }

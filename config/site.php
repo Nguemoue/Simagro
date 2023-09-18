@@ -57,6 +57,16 @@ return [
     **/
     'og_title'=>"",
     'og_image'=>config('app.url').'/favicon.jpg',
-    'og_site_name'=>"Simagro"
+    'og_site_name'=>"Simagro",
+    /**
+     *Lien pour les reseaux sociaux
+    */
+    'social'=>[
+        'facebook'=>"",
+        'linkedin'=>"",
+        'youtube'=>"",
+        'instagram'=>"",
+        'twitter'=>"",
+    ]
 
 ];
