@@ -8,6 +8,7 @@ use App\Http\Requests\Client\TestimonyStoreRequest;
 use App\Models\Temoignage;
 use App\Services\Testimony\TestimonyService;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ClientTestimonyController extends Controller
 {
@@ -45,6 +46,8 @@ class ClientTestimonyController extends Controller
 
     public function update(Request $request, Temoignage $testimony)
     {
+
+
     }
 
     public function destroy(Temoignage $testimony)
