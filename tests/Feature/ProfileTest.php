@@ -13,11 +13,12 @@ class ProfileTest extends TestCase
     public function test_profile_page_is_displayed(): void
     {
         $this->refreshApplicationWithLocale("en");
-        $user = Client::factory()->create();
+        $user = Client::factory()->create([
+            'email_verified_at' => now()->subDays(2)
+        ]);
         $response = $this
             ->actingAs($user)
             ->get(route('profile.edit'));
-
         $response->assertOk();
     }
 
