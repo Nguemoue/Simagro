@@ -1,5 +1,5 @@
 <x-ui.modal modal-id="createTestimonyModal" title="Nouveau témoignage">
-    <form action="{{route('client.testimonies.store')}}" class="needs-validation  was-validated" novalidate method="post">
+    <form action="{{route('client.testimonies.store')}}" class="needs-validation" novalidate method="post">
         @csrf
         <div class="form-group">
             <label for="contenu">Contenu</label>

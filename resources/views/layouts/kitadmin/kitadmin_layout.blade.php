@@ -8,12 +8,12 @@
     <meta name="author" content="{{config('site.author.name')}}">
     <meta name="keywords" content="{{config('site.keys')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{asset('_kitadmin/img/icons/icon-48x48.png')}}"/>
     <title>{{config('app.name')}}</title>
 {{--    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">--}}
     @stack("stylesheets")
     <link href="{{asset('_kitadmin/css/app.css')}}" rel="stylesheet">
-
 </head>
 
 <body>

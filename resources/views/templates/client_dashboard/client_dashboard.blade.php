@@ -100,6 +100,7 @@
 @endsection
 
 @push("scripts")
+    @vite(['resources/js/app.js'])
     <script src="{{asset('lib/izitoast/js/iziToast.min.js')}}"></script>
     <script src="{{asset('lib/bootstrap/bootstrap.js')}}"></script>
     <script src="{{asset("js/validation.js")}}"></script>

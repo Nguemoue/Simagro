@@ -4,7 +4,7 @@
     $title = $title??'Modal title';
     $size = $size??'lg';
 @endphp
-<div class="modal fade" data-backdrop="static" role="dialog" id="{{$modalId}}"  aria-hidden="true">
+<div class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" id="{{$modalId}}"  aria-hidden="true">
     <div class="modal-dialog modal-{{$size}}" role="document">
         <div class="modal-content">
             <div class="modal-header">

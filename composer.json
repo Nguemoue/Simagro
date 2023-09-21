@@ -12,6 +12,7 @@
         "laravel/breeze": "^1.19",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
+        "laravel/scout": "*",
         "laravel/socialite": "^5.8",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.12",
