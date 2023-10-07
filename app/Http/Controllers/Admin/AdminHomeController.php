@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Domains\Services\Model\Client;
 use App\Http\Controllers\Controller;
-use App\Models\Client;
 use App\Models\Publication;
 use App\Models\Rdv;
 use App\Models\Realisation;

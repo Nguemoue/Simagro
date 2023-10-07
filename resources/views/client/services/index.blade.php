@@ -6,18 +6,21 @@
                 <h5 class="fw-bold text-primary text-uppercase">Nos services!</h5>
                 <h1 class="mb-0">Liste respectives de nos différents services chez Simagro</h1>
             </div>
-            <div class="row g-5">
+            <div class="row g-5 justify-content-center align-items-center">
                 @foreach($services as $service)
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                    <div class="col-lg-6 col-sm-12 col-md-6 wow zoomIn my-4" data-wow-delay="0.3s">
                         <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                            <div class="service-icon2">
-                                <img src="{{asset('storage/'.$service->image)}}" alt="" class="img-fluid">
+                            <div class="mx-auto  h-75">
+                                <img src="{{asset('storage/'.$service->image)}}" style="object-fit: cover;width: 100%;height: 100%" alt="image" class="img-fluid">
                             </div>
-                            <h4 class="mb-3">{{$service->libelle}}</h4>
-                            <p class="m-0">{!! $service->description !!}</p>
-                            <a class="btn btn-lg btn-primary rounded" href="">
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
+                            <hr>
+                            <div class="position-absolute border" style="min-width: 50%">
+                                <h4 class="mb-3 text-light">{{$service->libelle}}</h4>
+                                <p class="m-0 text-light">{!! $service->description !!}</p>
+                                <a class="btn btn-lg btn-primary rounded" href="{{route('client.services.show',[$service->id])}}">
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

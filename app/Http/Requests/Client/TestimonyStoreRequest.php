@@ -17,4 +17,8 @@ class TestimonyStoreRequest extends FormRequest
     {
         return true;
     }
+
+    public function toTdo(){
+
+    }
 }

@@ -19,14 +19,15 @@
                     <a href="{{route('admin.home')}}" class="dropdown-item">{{__('navigation.admin_space')}}</a>
                 </div>
             </div>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('navigation.pages')}}</a>
+            <div @class(["nav-item dropdown"])>
+                <a href="#"
+                   @class(["nav-link  dropdown-toggle", "active"=>Route::is('client.plan.index','client.membres.index','client.temoignages.index','client.quote.index')])
+                    data-bs-toggle="dropdown">{{__('navigation.pages')}}</a>
                 <div class="dropdown-menu m-0">
-                    <a href="#" class="dropdown-item">{{__('navigation.pricing_plan')}}</a>
-                    <a href="#" class="dropdown-item">{{__('navigation.our_feature')}}</a>
-                    <a href="#" class="dropdown-item">{{__('navigation.team_members')}}</a>
-                    <a href="{{route('client.testimonies.index')}}" class="dropdown-item">{{__('navigation.testimonial')}}</a>
-                    <a href="#" class="dropdown-item">{{__('navigation.free_quote')}}</a>
+                    <a href="{{route('client.plan.index')}}" @class(["dropdown-item",'active'=>Route::is('client.plan.index')]) >{{__('navigation.pricing_plan')}}</a>
+                    <a href="{{route('client.membres.index')}}" @class(["dropdown-item",'active'=>Route::is('client.membres.index')])>{{__('navigation.team_members')}}</a>
+                    <a href="{{route('client.temoignages.index')}}" @class(["dropdown-item",'active'=>Route::is('client.temoignages.index')])>{{__('navigation.testimonial')}}</a>
+                    <a href="{{route('client.quote.index')}}" @class(["dropdown-item",'active'=>Route::is('client.quote.index')])>{{__('navigation.free_quote')}}</a>
                 </div>
             </div>
             <div class="nav-item dropdown">

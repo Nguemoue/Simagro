@@ -67,7 +67,7 @@
                         <span class="text-dark"><i class="fa fa-user"></i> User</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <a @class(["dropdown-item","active"=>Route::is('profile.edit')]) href="{{route('profile.edit')}}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                         <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>
                             Analytics</a>
                         <div class="dropdown-divider"></div>

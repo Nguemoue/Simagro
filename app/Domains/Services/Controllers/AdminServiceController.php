@@ -1,19 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Domains\Services\Controllers;
 
 use App\Constant\ReturnStatus;
-use App\Data\Service\StoreServiceData;
+use App\Domains\Services\Actions\StoreServiceAction;
+use App\Domains\Services\Requests\AdminServiceStoreRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\MediaCannotBeDeleted;
+use Storage;
+use function back;
+use function getStoragePathFor;
+use function redirect;
+use function responseTextAfterDelete;
+use function view;
 
-class ServiceController extends Controller
+class AdminServiceController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $services = Service::query()->get();
         return view("admin.services.index",[
@@ -21,51 +30,48 @@ class ServiceController extends Controller
         ]);
     }
 
-    public function create()
+    /**
+     * page de creation d'un service en mode administrateur
+     * @return View
+     */
+    public function create(): View
     {
         return view("admin.services.create");
     }
 
-    public function store(Request $request)
+    /**
+     * stocke le service en base de données
+     * @param AdminServiceStoreRequest $request
+     * @param StoreServiceAction $storeServiceAction
+     * @return RedirectResponse
+     */
+    public function store(AdminServiceStoreRequest $request,StoreServiceAction $storeServiceAction): RedirectResponse
     {
-        $data = StoreServiceData::from($request);
-
-        //je cree mon service
-        \DB::transaction(function () use ($data,$request){
-            $service = Service::query()->create([
-                "libelle"=>$data->libelle,
-                "description"=>$data->description,
-                "but"=>$data->but,
-                "administrateur_id"=>auth('admin')->id(),
-                "image"=>$request->file("image")->store(getStoragePathFor('services'))
-            ]);
-            foreach ($data->otherImages as $image){
-                $service->addMedia($image)->toMediaCollection("images");
-            }
-
-        });
-
-        //je stocke les autres images
-        return redirect()->back()->with(ReturnStatus::SUCCESS,"service cree");
+        $storeServiceAction->execute($request);
+        return back()->with(ReturnStatus::SUCCESS,"service cree");
     }
 
-    public function show(Service $service)
+    /**
+     * renvoie la page administrateur pour voir un service
+     * @param Service $service
+     * @return View
+     */
+    public function show(Service $service): View
     {
         return view("admin.services.show",[
             "service"=>$service
         ]);
     }
 
-    public function edit(Service $service)
+    public function edit(Service $service): View
     {
         return view("admin.services.edit",[
             "service"=>$service
         ]);
     }
 
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $service): RedirectResponse
     {
-        //je valide mes donnees
         if($request->hasFile("other_images")){
             try {
                 $service->deleteMedia("images");
@@ -81,7 +87,7 @@ class ServiceController extends Controller
             }
         }
         if($request->hasFile("image")){
-            \Storage::delete($service->image);
+            Storage::delete($service->image);
             $service->image = $request->file("image")->store(getStoragePathFor("services"));
         }
         $service->libelle = $request->input("titre");
@@ -92,10 +98,10 @@ class ServiceController extends Controller
 
     }
 
-    public function destroy(Service $service)
+    public function destroy(Service $service): RedirectResponse
     {
         $service->delete();
-        return redirect()->back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("services"));
+        return back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("services"));
 
     }
 }

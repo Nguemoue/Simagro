@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Client;
 
 use App\Constant\ReturnStatus;
+use App\Data\Temoignage\UpdateTemoignageData;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\TestimonyDeleteRequest;
 use App\Http\Requests\Client\TestimonyStoreRequest;
 use App\Http\Requests\Client\UpdateTestimonyRequest;
 use App\Models\Temoignage;
 use App\Services\Testimony\TestimonyService;
 
 
-class ClientTestimonyController extends Controller
+class ClientDashboardTestimonyController extends Controller
 {
     public function __construct(public TestimonyService $testimonyService)
     {}
@@ -23,19 +25,12 @@ class ClientTestimonyController extends Controller
         ]);
     }
 
-    public function create()
-    {
-    }
-
     public function store(TestimonyStoreRequest $request)
     {
         $this->testimonyService->create($request->input("contenu"),clientAuth()->id());
         return back()->with(ReturnStatus::SUCCESS,responseTextAfterCreate('temoignage'));
     }
 
-    public function show(Temoignage $testimony)
-    {
-    }
 
     public function edit(Temoignage $testimony)
     {
@@ -46,13 +41,14 @@ class ClientTestimonyController extends Controller
 
     public function update(UpdateTestimonyRequest $request, Temoignage $testimony)
     {
-        $testimony->contenu = $request->input("contenu");
+        $data = UpdateTemoignageData::from($request);
+        $this->testimonyService->update($data,$testimony->id);
         return back()->with(ReturnStatus::SUCCESS,responseTextAfterUpdate("temoignage"));
     }
 
-    public function destroy(Temoignage $testimony)
+    public function destroy(TestimonyDeleteRequest $request,Temoignage $testimony)
     {
-        $testimony->delete();
+        $this->testimonyService->delete($testimony);
         return back()->with(ReturnStatus::SUCCESS,responseTextAfterDelete("temoignage"));
     }
 }

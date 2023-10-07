@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Constant\ReturnStatus;
+use App\Domains\Services\Model\Client;
 use App\Http\Controllers\Controller;
-
-use App\Models\Client;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
-use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 

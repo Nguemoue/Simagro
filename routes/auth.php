@@ -18,12 +18,12 @@ Route::group([
     "prefix" => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect']
 ], function () {
-
+    /*for admin */
     Route::middleware("guest:admin")->group(function () {
         Route::get('login/admin', [AdminAuthenticatedSessionController::class, 'create'])->name('login.admin');
         Route::post('login/admin', [AdminAuthenticatedSessionController::class, 'store'])->name('login.admin');
     });
-
+    /*for web*/
     Route::middleware(['guest:web'])->group(function () {
         Route::get('register', [RegisteredUserController::class, 'create'])
             ->name('register');
@@ -48,7 +48,8 @@ Route::group([
             ->name('password.store');
     });
 
-    Route::middleware('auth')->group(function () {
+    /* for web */
+    Route::middleware('auth:web')->group(function () {
         Route::get('verify-email', EmailVerificationPromptController::class)
             ->name('verification.notice');
 

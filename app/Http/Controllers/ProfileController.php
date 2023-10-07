@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\View\View;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ProfileController extends Controller
 {

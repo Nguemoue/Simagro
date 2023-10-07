@@ -3,16 +3,12 @@
 namespace Tests\Feature\Auth;
 
 use App\Constant\ReturnStatus;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
-
-
 
     public function test_registration_screen_can_be_rendered(): void
     {
@@ -38,6 +34,7 @@ class RegistrationTest extends TestCase
             "ville"=>"ville",
             "email_verified_at"=>now()
         ]);
+
         $this->assertGuest();
         $response->assertRedirect(route('login'))->assertSessionHas(ReturnStatus::SUCCESS);
     }

@@ -313,7 +313,9 @@ h6,
 /*** Service ***/
 .service-item {
     position: relative;
-    height: 300px;
+    min-height: 300px;
+    max-height: 800px;
+    height: 400px;
     padding: 0 30px;
     transition: .5s;
 }

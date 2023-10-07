@@ -66,7 +66,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Client::class,
+            'model' => \App\Domains\Services\Model\Client::class,
         ],
         "adminsitrateurs"=>[
             'driver'=>"eloquent",

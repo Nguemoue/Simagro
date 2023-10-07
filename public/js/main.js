@@ -59,6 +59,10 @@
         time: 2000
     });
 
+    //data background
+    $('[data-background]').each(function (index,elt){
+        $(elt).css({backgroundImage: elt.dataset.background})
+    })
 
     // Back to top button
     $(window).scroll(function () {
@@ -103,7 +107,6 @@
         loop: true,
         margin: 45,
         dots: false,
-        loop: true,
         autoplay: true,
         smartSpeed: 1000,
         responsive: {

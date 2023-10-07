@@ -7,7 +7,7 @@ if(!function_exists("adminUser")){
 }
 
 if(!function_exists("clientUser")){
-    function clientUser(): \App\Models\Client|\Illuminate\Contracts\Auth\Authenticatable|null
+    function clientUser(): \App\Domains\Services\Model\Client|\Illuminate\Contracts\Auth\Authenticatable|null
     {
         return clientAuth()->user();
     }

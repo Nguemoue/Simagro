@@ -8,11 +8,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ShareSupportedLocaleServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-
-    }
-
     public function boot()
     {
         $supportedLocales = LaravelLocalization::getSupportedLocales();
